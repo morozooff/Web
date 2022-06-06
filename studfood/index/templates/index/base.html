@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{%load static%}
+//
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto&display=swap');
+
+        html{
+            background-color: #f8f8ff;
+        }
+
+/*This is menus&namesites element*/
+/*Namesite elements*/
+.namesite{
+    background-color:#32cd32;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    position: fixed;
+    text-align: center;
+    max-height: auto;
+    width: auto;
+    border: 3px solid #90ee90;
+    overflow:hidden;
+}
+.namesite h1{
+    font-size: 40px;
+}
+
+/*Menu elements*/
+.menu{
+    background-color: white;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+}
+.list-menu{
+    list-style: none;
+    padding: 0;
+    border: 3px solid #90ee90;
+}
+.list-menu li{
+    border: 2px solid #90ee90;
+    background: #32cd32;
+}
+
+.list-menu a{
+  display: inline-block;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border-radius: 1px;
+  transition: 0.2s;
+}
+.list-menu li:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+.namesite h1{
+    font-size: 40px;
+}
+/*end namesite&menu*/
+
+/*Container with inside*/
+.container{
+    background-color: white;
+    max-width: 800px;
+    margin: auto;
+    padding: 5px;
+    border: 3px solid #e6e6fa;
+    font-family: 'Roboto', sans-serif;
+
+}
+/*Text*/
+.nameofmeal{
+    color:grey;
+    font-style: italic;
+    font-size: 18px;
+}
+.ingridients{
+    background-color:#f8f8ff;
+    padding-left: 30px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+/*Image*/
+.imageofmeal{
+    height: 500px;
+    width: 750px;
+    margin-left: 35px;
+    border-radius: 50%;
+    border-bottom: 10px solid #b0c4de;
+    border-right: 10px solid #b0c4de;
+}
+
+/*Form reg/autoruzation*/
+.container form{
+    background-color:white;
+    max-width: 415px;
+    margin: auto;
+    padding: 5px;
+    border: 3px solid #e6e6fa;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form {
+    margin top: 0px;
+    margin-bottom: 20px;
+    max-width: 430px;
+    margin: auto;
+    background-color:#32cd32;
+    border-radius: 4%;
+    text-align: center;
+}
+
+
+.container form p{
+    margin-top: 4px;
+    margin-bottom: 0px;
+}
+
+.shadow{
+    text-align: center;
+    color:grey;
+    font-size: 13px;
+}
+.shadow a:hover{
+    margin-left: 10px;
+    transition:all .3s;
+}
+
+.placeform{
+    border-radius: 5%;
+    border: 1px solid grey;
+    height: 30px;
+
+}
+
+input:required:valid{
+    border: 2px solid green;
+}
+
+input:required:invalid{
+     margin-left: 15px;
+    transition:all .3s
+}
+
+/*button on the reg page*/
+button{
+  margin-top:10px;
+  background: #32cd32;
+  display: inline-block;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 1px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+}
+button:hover { background: #adff2f; }
+button:active { background: #dcdcdc; }
+    </style>
+</head>
+
+<p id="top"></p>
+<html>
+  <header>
+      <div class="namesite">
+      <h1>STUDFOOD</h1>
+        <div style="font-size: 18px" class="menu">
+            <ul class="enum list-menu">
+                <li><a href="{%url 'first'%}">Завтрак</a></li>
+                <li><a href="{%url 'second'%}">Обед</a></li>
+                <li><a href="{%url 'third'%}">Ужин</a></li>
+                <hr>
+                <li><a href="{%url 'reg'%}">Регистрация</a></li>
+                <li><a href="/auto">Вход</a></li>
+                <hr>
+                <li><a href="#top">Наверх</a></li>
+                <li><a href="{%url 'index'%}">На главную</a></li>
+            </ul>
+        </div>
+      </div>
+  </header>
+
+  {% block content %}{% endblock %}
+</html>

@@ -1,0 +1,86 @@
+{% extends 'index/base.html'%}
+
+{%block content%}
+      <div class="container">
+          <h1>Дорогие друзья!</h1>
+          <p> На этом сайте вы сможете найти самые простые рецепты, подходящие для студенческой жизни.</p>
+          <br>
+          <img src="https://img2.akspic.ru/originals/1/3/1/5/15131-nezdorovaya_pishha-pozdnij_zavtrak-garnir-pishha-bystroe_pitanie-1920x1080.jpg" height="430" width="780">
+          <br>
+          <style>
+              p{
+                font-family: cursive;
+                color: gray;
+              }
+          </style>
+          <p>Все что есть на этой картинке - на сайте не будет, будет только <strong>здоровая пища</strong></p>
+          <p>Для того чтобы начнать пользоваться сайтом выберите интересующую вас вкладку в закрепленном меню</p>
+          <form method="POST">
+              {% csrf_token %}
+              {{comment}}
+          </form>
+          <button onclick="sendComment()">send</button>
+          <div id="comments">
+
+          </div>
+      </div>
+<script>
+    const comments = document.getElementById('comments');
+
+    async function sendComment(){
+        const commentForm = document.forms[0];
+        const email = commentForm.email.value;
+        const contents = commentForm.contents.value;
+
+        try{
+            await fetch('/create_comment/',{
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                {
+                 email: email,
+                 contents: contents,
+                })
+            });
+            await fetchComments();
+        }
+        catch(e) {
+        alert(e);
+        }
+    }
+
+    async function fetchComments() {
+        comments.innerHTML = "";
+        try{
+           await fetch('/get_comments/', {
+            'method': 'GET',
+            'mode': 'no-cors',
+           }).then(async (response) => {
+                response.json().then(data => {
+                    data.forEach(comment => {
+                   const commentElement = document.createElement("div");
+                   const commentHeading = document.createElement("h1");
+                   const commentBody = document.createElement("p");
+
+                   commentBody.innerText = comment.contents;
+                   commentHeading.innerText = comment.email;
+                   commentElement.appendChild(commentHeading);
+                   commentElement.appendChild(commentBody);
+                   comments.appendChild(commentElement);
+                });
+           });
+        });
+        }
+        catch(e) {
+        alert(e);
+        }
+
+    }
+
+    fetchComments();
+</script>
+{%endblock%}
+

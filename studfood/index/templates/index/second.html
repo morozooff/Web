@@ -1,0 +1,103 @@
+{% extends 'index/base.html'%}
+{%block content%}
+     <div class="container">
+           <h1 id = "first_header">Обед</h1>
+           <p id = "name_of_meal" class="nameofmeal">Уютненький стейк на сковороде и приятный гарнир</p>
+           <hr>
+           <img class="imageofmeal" src="https://kopilka-kulinara.ru/upload/information_system_52/3/8/6/item_3860/item_3860.jpg">
+           <h2 id = "second_header">Как приготовить</h2>
+           <h3 id = "ingredient">Ингридиенты</h3>
+           <ul class = "ingridients">
+           <li id = "ingredients_1">Мясо из свиной шеи – примерно 0,5 килограмма</li>
+           <li id = "ingredients_2">Растительное масло</li>
+           <li id = "ingredients_3">Специи по вкусу</li>
+           </ul>
+           <h3 id = "action">Готовим</h3>
+           <ol>
+           <li id = "step_1">Для начала мы хорошенько промываем нашу свинину, затем немного промокаем ее полотенцем. Начинаем резать на небольшие куски, толщина куска примерно, 3 сантиметра. Главное режьте поперек волокон (важно!).</li>
+           <li id = "step_2">Потом, каждый кусочек мы смазываем слегка маслом, и посыпаем любыми специями, солим, перчим. Это все делается сугубо на ваш вкус!</li>
+           <li id = "step_3">В это время подготавливаем сковородку. Ставим ее на большой огонь, наливаем туда немножко масло, ждем пока, масло нагреется. Как только масло сильно накалилось. То укладываем туда аккуратно каждый кусочек и жарим буквально 3 – 4 минуты до образования корочки.<em> Пока они жарятся, их нельзя протыкать, иначе весь сок может выйти из свинины.</em></li>
+           <li id = "step_4">Видим, что одна сторона отлично подпеклась, переворачиваем, обжариваем так же вторую сторону.</li>
+           <li id = "step_5">Как только мы так же обжарили и вторую сторону стейка, то убавляем немножко огонь и продолжаем готовить. Стоит продолжать жарить еще минут 5 – 7, периодически переворачивая куски мяса. Потом, можете проверить его на готовность, проткнув, и посмотрев, какого цвета идет сок.</li>
+           <li id = "step_6">Как только вы дожарили, то можно смело накрыть крышкой, и оставить буквально на 10 – 15 минут в покое. За это время можно приготовить гарнир на ваш вкус - кстати отлично сочетается с овощами, картошкой.</li>
+           </ol>
+           <h3 id = "bon_appetit">Приятного аппетита и хорошего дня!</h3>
+     </div>
+     <div class="container" >
+           <h3 id = "language">На каком языке вы бы хотели видеть эту страницу?</h3>
+           <button  onclick="translateOnEnglish()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/250px-Flag_of_the_United_Kingdom_%283-5%29.svg.png" width="45" height="30"></button>
+           <button  onclick="translateOnRussian()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png" width="45" height="30"></button>
+     </div>
+     </div>
+
+<script>
+
+      const rusLocale = {
+            "first_header": "Обед",
+            "name_of_meal": "Уютненький стейк на сковороде и приятный гарнир",
+            "second_header": "Как приготовить",
+            "ingredient": "Ингридиенты",
+            "ingredients_1":"Мясо из свиной шеи – примерно 0,5 килограмма",
+            "ingredients_2": "Растительное масло",
+            "ingredients_3": "Специи по вкусу",
+            "action": "Готовим",
+            "step_1": "Для начала мы хорошенько промываем нашу свинину, затем немного промокаем ее полотенцем. Начинаем резать на небольшие куски, толщина куска примерно, 3 сантиметра. Главное режьте поперек волокон (важно!).",
+            "step_2": "Потом, каждый кусочек мы смазываем слегка маслом, и посыпаем любыми специями, солим, перчим. Это все делается сугубо на ваш вкус!",
+            "step_3": "В это время подготавливаем сковородку. Ставим ее на большой огонь, наливаем туда немножко масло, ждем пока, масло нагреется. Как только масло сильно накалилось. То укладываем туда аккуратно каждый кусочек и жарим буквально 3 – 4 минуты до образования корочки.",
+            "step_4": "Видим, что одна сторона отлично подпеклась, переворачиваем, обжариваем так же вторую сторону.",
+            "step_5": "Как только мы так же обжарили и вторую сторону стейка, то убавляем немножко огонь и продолжаем готовить. Стоит продолжать жарить еще минут 5 – 7, периодически переворачивая куски мяса. Потом, можете проверить его на готовность, проткнув, и посмотрев, какого цвета идет сок.",
+            "step_6": "Как только вы дожарили, то можно смело накрыть крышкой, и оставить буквально на 10 – 15 минут в покое. За это время можно приготовить гарнир на ваш вкус - кстати отлично сочетается с овощами, картошкой.",
+            "bon_appetit": "Приятного аппетита и хорошего дня!",
+            "language": "На каком языке вы бы хотели видеть эту страницу?",
+      }
+
+      const engLocale = {
+           "first_header": "Dinner",
+            "name_of_meal": "A cozy steak in a pan and a nice side dish",
+            "second_header": "How to cook",
+            "ingredient": "Ingredients",
+            "ingredients_1": "Pork neck meat - about 0.5 kilograms",
+            "ingredients_2": "Vegetable oil",
+            "ingredients_3": "Spices to taste",
+            "action": "Cooking",
+            "step_1": "To begin with, we thoroughly wash our pork, then blot it a little with a towel. We begin to cut into small pieces, the thickness of the piece is approximately 3 centimeters. The main thing is to cut across the fibers (important!).",
+            "step_2": "Then, we grease each piece lightly with oil, and sprinkle with any spices, salt, pepper. It's all done purely to your taste!",
+            "step_3": "At this time, prepare the pan. We put it on a large fire, pour a little oil there, wait until the oil heats up. As soon as the oil gets hot. Then we carefully place each piece there and fry literally 3-4 minutes until a crust forms.",
+            "step_4": "We see that one side is perfectly baked, turn over, and fry the second side in the same way.",
+            "step_5": "As soon as we also fried the second side of the steak, we reduce the fire a little and continue cooking. It is worth continuing to fry for another 5-7 minutes, periodically turning the pieces of meat. Then, you can test it for readiness by piercing it and seeing what color the juice comes out.",
+            "step_6": "As soon as you have fried, you can safely cover with a lid and leave for literally 10 - 15 minutes alone. During this time, you can prepare a side dish to your taste - by the way, it goes well with vegetables, potatoes.",
+            "bon_appetit": "Bon appetit and have a nice day!",
+            "language": "What language would you like to see this page in?",
+      }
+      const russian = "ru";
+      const english = "en";
+
+      const language = {
+            "ru": rusLocale,
+            "en": engLocale,
+      }
+
+      function translate(locale) {
+            for (let key in language[locale]){
+                  document.getElementById(key).innerText = language[locale][key]
+            }
+            localStorage.setItem("Language", locale);
+      }
+
+      function translateOnEnglish(){
+            translate(english)
+      }
+
+      function translateOnRussian(){
+            translate(russian)
+      }
+
+      let lang = localStorage.getItem("Language");
+      if (lang === "ru") {
+        translateOnRussian();
+      } else{
+            translateOnEnglish();
+      }
+</script>
+
+{%endblock%}

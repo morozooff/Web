@@ -1,0 +1,19 @@
+services:
+  db:
+    image: sqlite3
+    volumes:
+      - ./data/db:/var/lib/sqlite3/data
+    environment:
+      - POSTGRES_DB=web
+      - POSTGRES_USER=web
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "5432:5432"
+  project:
+    build: .
+    ports:
+      - '80:80'
+    depends_on:
+      - db
+volumes:
+  db:

@@ -1,0 +1,99 @@
+{% extends 'index/base.html'%}
+{%block content%}
+<body>
+      <div class="container">
+
+          <h1 class="form">Регистрация</h1>
+          <form method="get">
+          <div>
+          <div>
+            <p>Имя:</p>
+            <label for = "name"><input pattern="[A-ZА-Я]{1}[a-zа-я]+" class="placeform" type="text" name = "name" id = "name" required placeholder ="Ваше имя"></label>
+          </div>
+
+          <div>
+            <p>Фамилия:</p>
+            <label for = "surname"><input pattern="[A-ZА-Я]{1}[a-zа-я]+" class="placeform" type="text" name = "surname" id = "surname" required placeholder="Ваша фамилия"></label>
+          </div>
+
+          <div>
+            <p>E-mail:</p>
+            <label for = "email"><input class="placeform" type="email" name = "email" id = "email" required placeholder="Адрес вашей почты"></label>
+          </div>
+
+          <div>
+            <p>Пароль:</p>
+            <label for = "password"><input class="placeform" type="password" name = "password" id = "password" required placeholder="Придумайте пароль"></label>
+          </div>
+
+          <div>
+              <p>Укажите пол:</p>
+              <label> <input type="radio" name="sex" value="мужской">Мужской  <div class="radio-control male"></div> </label>
+              <label> <input type="radio" name="sex" value="женский">Женский <div class="radio control female"></div> </label>
+          </div>
+          </div>
+
+          <button onclick="validate()">Зарегистрироваться</button>
+          <button onclick="send()">Telegram</button>
+          </form>
+
+          <div>
+          <p class="shadow">Я уже смешарик - <a href="auto.html">Войти</a></p>
+          </div>
+
+      </div>
+  </body>
+
+ <script language="JavaScript">
+
+
+    const send  = function (){
+        let name = document.getElementById('name').value;
+        let surname = document.getElementById('surname').value;
+        let password = document.getElementById('password').value;
+        text = 'Новый пользователь присоединился к нам - ' + name +' '+ surname
+        let url = `https://api.telegram.org/bot5316248375:AAFCq0wk1HeJWgjFGtkAwMIzll5vTeiwuAs/sendMessage?chat_id=1130418229&text= ${text}`;
+        console.log(name);
+        console.log(surname);
+        console.log(password);
+        let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+        let xhr = new XHR();
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+ </script>
+
+  <script language="JavaScript">
+    const emailReg = /\w+\d*@\w+\d*\.\w+\d*/
+
+    function validateEmail(email){
+        if (!emailReg.exec(email)){
+            document.forms[0].email.setCustomValidity("Введите корректный адрес почты");
+            return false;
+        } else {
+            document.forms[0].email.setCustomValidity("");
+            return true;
+        }
+    }
+
+    function validatePassword(password){
+        if (password.length < 6){
+            document.forms[0].password.setCustomValidity("Пароль должен состоять минимум из 6 символов");
+            return false;
+        } else {
+            document.forms[0].password.setCustomValidity("");
+            return true;
+        }
+    }
+
+
+    async function validate() {
+        const email = document.forms[0].email.value;
+        const password = document.forms[0].password.value;
+        let validation = 1
+        validation &= validateEmail(email);
+        validation &= validatePassword(Password);
+    }
+
+</script>
+{%endblock%}
